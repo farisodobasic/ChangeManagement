@@ -1,0 +1,19 @@
+username : manger
+email : change@management.com
+password : manager
+type : 1
+
+username : cab
+email : cab@management.com
+password : cab
+type : 2
+
+username : faris
+email : faris@gmail.com
+password : faris
+type : 0
+
+username : orhan
+email : orhan@gmail.com
+password : orhan
+type : 0
