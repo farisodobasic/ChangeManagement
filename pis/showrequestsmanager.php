@@ -26,13 +26,37 @@
 	<div id = "user-frame-div">
 		<div id = "user-menu-div">
 			 <ul>
-			  <li><a href="showrequestsmanager.php">SHOW REQUESTS</a></li>
+			  <li><a id = "odabran-show-request" href="showrequestsmanager.php">SHOW REQUESTS</a></li>
 			  <li><a href="logout.php?logout">LOGOUT</a></li>
 			</ul> 
 		</div>
 
 		<div id = "user-dashboard-div">
 			
+			<?php
+				$veza = new PDO("mysql:dbname=bdchange;host=localhost;charset=utf8", "root", "root");
+				$veza->exec("set names utf8");
+				$rezultat = $veza->query("select id, username, email from users");
+
+				foreach ($rezultat as $user) 
+				{
+					$ime = $user['username'];
+
+					print("<div id = 'show-user-request'>".$ime."</div>");
+				}
+			?>
+			<!--<div id = "show-user-request">
+				testic
+			</div>
+			<div id = "show-user-request">
+				testic
+			</div>
+			<div id = "show-user-request">
+				testic
+			</div>
+			<div id = "show-user-request">
+				testic
+			</div>-->
 		</div>
 	</div>
 </body>

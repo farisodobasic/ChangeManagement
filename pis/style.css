@@ -148,6 +148,7 @@ table tr td a
 	height: 540px;
 	background-color: black;
 	opacity: 0.6;
+	overflow-y: auto;
 }
 /*VERTICAL MENU -- obicni user*/
 ul {
@@ -178,4 +179,23 @@ li a:hover {
     /*background-color: #555;*/
     background-color: #80bfff;
     color: white;
+}
+
+#odabran-show-request
+{
+	background-color: #80bfff;
+	color: white;
+}
+
+#show-user-request
+{
+	margin-top: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	overflow: hidden;
+	width: 1070px;
+	height: 200px;
+	background-color: #80bfff;
+	border-bottom: 1px solid white;
+	border-top: 1px solid white;
 }
