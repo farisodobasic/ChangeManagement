@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
-	<div id = "welcome-title">Welcome <?php echo $userRow['username']; ?>&nbsp;</div>
+	<div id = "welcome-title">Welcome <?php echo $userRow['username']; ?>&nbsp;	</div>
 	<div id = "top">
 		<h2>Change Management</h2>
 	</div>

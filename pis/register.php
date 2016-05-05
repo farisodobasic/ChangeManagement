@@ -5,7 +5,24 @@
 	/*ima logovan korisnik*/
 	if(isset($_SESSION['user']) != "")
 	{
-		header("Location : home.php");
+		$id = $_SESSION['user'];
+		$res = mysql_query("SELECT * FROM users WHERE id='$id'");
+		$row = mysql_fetch_array($res);
+		
+		  if($row['type'] == 0)
+		  {
+		  	header("Location: home.php");	
+		  }
+		  elseif ($row['type'] == 1) 
+		  {
+		  	header("Location: managerhome.php");
+		  }
+		  elseif ($row['type'] == 2) 
+		  {
+		  	header("Location: cabhome.php");
+		  }
+
+		/*header("Location : home.php");*/
 	}
 	include_once 'dbconnect.php';
 	/*pressed Sign Up buttom*/
