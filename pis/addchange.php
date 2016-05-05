@@ -10,6 +10,46 @@
 	$res=mysql_query("SELECT * FROM users WHERE id=".$_SESSION['user']);
 	$userRow=mysql_fetch_array($res);
 ?>
+
+<?php
+
+
+	/*pressed Sign Up buttom*/
+	if(isset($_POST['btn-add']))
+	{
+		
+		 
+		 $title = mysql_real_escape_string($_POST['title']);
+		 $benefits = mysql_real_escape_string($_POST['benefits']);
+		 $reason = (mysql_real_escape_string($_POST['reason']));
+		 $risks = (mysql_real_escape_string($_POST['risks']));
+		 $priority = (mysql_real_escape_string($_POST['priority']));
+		 $cons = (mysql_real_escape_string($_POST['cons']));
+		 $budget = (mysql_real_escape_string($_POST['budget']));
+		 $days = (mysql_real_escape_string($_POST['days']));
+
+		 $usr_id = $_SESSION['user'];
+		 $p = 0;
+
+		 if($priority == 'low') $p = '0';
+		 else if($priority == 'medium') $p = '1';
+		 else if($priority == "high") $p = '2';
+		 else $priority = '3';
+
+		$con = new PDO("mysql:dbname=dbchange;host=localhost;charset=utf8", "admin", "admin");
+			$con->exec("set names utf8");
+	 
+			 $res = $con->prepare("insert into `change` (user_id, prioritet, naslov, razlog, budzet, benefit, posljedice, rizik, vrijemeizvedbe, odobrenmanager, odobrencab) values (?,?,?,?,?,?,?,?,?,?,?)");
+			 $res->execute(array($usr_id, $p, $title, $reason, $budget, $benefits, $cons, $risks, $days, 0, 0));
+			 
+			 
+	 
+	 
+	} 
+
+
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -43,25 +83,25 @@
 							<form  method="post">
 								<table id = "addform" align="center" width="80%" border="0">
 									<tr>
-										<td><input type="text" name="email" placeholder="Change title" required /></td>
+										<td><input type="text" name="title" placeholder="Change title" required /></td>
 										<td></td>
-										<td><textarea class="area" rows = "4" cols="20" placeholder="Change benefits" required></textarea></td>
+										<td><textarea name = "benefits" class="area" rows = "4" cols="20" placeholder="Change benefits" required></textarea></td>
 									</tr>
 									<tr>
-										<td><textarea  class="area" rows = "4" cols="20" placeholder="Reason for change" required></textarea></td>
+										<td><textarea  name="reason" class="area" rows = "4" cols="20" placeholder="Reason for change" required></textarea></td>
 										<td></td>
-										<td><textarea class="area" rows = "4" cols="20" placeholder="Change risks" required></textarea></td>
+										<td><textarea name="risks" class="area" rows = "4" cols="20" placeholder="Change risks" required></textarea></td>
 									</tr>
 
 									<tr>
-										<td> <select class="area">
+										<td> <select name="priority" class="area">
 											  <option value="low">Low</option>
 											  <option value="medium">Medium</option>
 											  <option value="high">High</option>
 											  <option value="very high">Very high</option>
 											</select> </td>
 											<td></td>
-										<td><textarea class="area" rows = "4" cols="20" placeholder="Change consequences" required></textarea></td>
+										<td><textarea name="cons" class="area" rows = "4" cols="20" placeholder="Change consequences" required></textarea></td>
 									</tr>
 
 									<tr>
@@ -72,7 +112,7 @@
 
 
 									<tr>
-										<td colspan="3"><button type="submit" name="btn-login">Sign In</button></td>
+										<td colspan="3"><button type="submit" name="btn-add">Add change</button></td>
 									</tr>
 									<tr>
 										<td><a href="register.php">Sign Up Here</a></td>
