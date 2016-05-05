@@ -72,7 +72,7 @@
 
 
 									<tr>
-										<td colspan="2"><button type="submit" name="btn-login">Sign In</button></td>
+										<td colspan="3"><button type="submit" name="btn-login">Sign In</button></td>
 									</tr>
 									<tr>
 										<td><a href="register.php">Sign Up Here</a></td>
