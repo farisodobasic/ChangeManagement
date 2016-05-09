@@ -1,9 +1,7 @@
 <?php
 	session_start();
 	include_once 'dbconnect.php';
-	?>
-	<script>alert('Uspjesno ste logovani...treba to cesce ;) ');</script>
-	<?php
+
 
 	if(!isset($_SESSION['user']))
 	{	
@@ -30,7 +28,7 @@
 		<div id = "user-menu-div">
 			 <ul>
 			  <li><a href="addchange.php">ADD A NEW CHANGE REQUEST</a></li>
-			  <li><a href="review.php">REVIEW MY CHANGE REQUESTS</a></li>
+			  <li><a id = "odabran-show-request" href="review.php">REVIEW MY CHANGE REQUESTS</a></li>
 			  <li><a href="#">DELETE CHANGE REQUESTS</a></li>
 			  <li><a href="#">OPTION 1</a></li>
 			  <li><a href="#">OPTION 2</a></li>
@@ -42,7 +40,32 @@
 		</div>
 
 		<div id = "user-dashboard-div">
-			
+			<?php
+		
+				$veza = new PDO("mysql:dbname=dbchange;host=localhost;charset=utf8", "admin", "admin");
+				$veza->exec("set names utf8");
+
+						$id = $_SESSION['user'];
+						/*SELEKTOVANJE CHANGE-ova SVIH USERA*/
+						
+						$result = $veza->query("SELECT id, naslov, UNIX_TIMESTAMP(datum) vrijeme, odobrenmanager, odobrencab FROM `change` where user_id ='".$userRow["id"]."'");
+						foreach ($result as $changer) 
+						{
+							$naslov = $changer['naslov'];
+							$datum = date("h:m:Y (h:i)", $changer['vrijeme']);
+							$changeid = $changer['id'];
+							$odobrioManager = $changer['odobrenmanager'];
+							
+								print "<div id = 'show-user-changes'>";
+										print "Title : " .$naslov;
+										print "<br><br>";
+										print "Creation date : " .$datum;
+										print "</div>";
+										
+						}
+										
+				
+			?>
 		</div>
 	</div>
 </body>

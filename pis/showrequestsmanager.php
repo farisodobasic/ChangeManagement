@@ -11,9 +11,18 @@
 
 	if(isset($_POST['btn-accept']))
 	{
-		$changeis = $_POST['userchangeid'];
-		/*echo $ime;*/
+		$changeid = $_POST['userchangeid'];
+		$odobrenje = 1;
+		$veza = new PDO("mysql:dbname=dbchange;host=localhost;charset=utf8", "admin", "admin");
+		$veza->exec("set names utf8");
+		$sql = "UPDATE `change` SET odobrenmanager = :odobrenje
+				WHERE id = :change_id";
+		$stmt = $veza->prepare($sql);
+		$stmt->bindParam(':odobrenje', $odobrenje, PDO::PARAM_INT);
+		$stmt->bindParam('change_id', $changeid, PDO::PARAM_INT);
+		$stmt->execute();
 		
+
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -51,8 +60,9 @@
 						$ime = $user['username'];
 						$id = $user['id'];
 						/*SELEKTOVANJE CHANGE-ova SVIH USERA*/
-						/*print("<div id = 'show-user-request'>".$ime."</div>");*/
-						$result = $veza->query("SELECT id, naslov, UNIX_TIMESTAMP(datum) vrijeme FROM `change` where user_id = '$id'");
+						
+						$result = $veza->query("SELECT id, naslov, UNIX_TIMESTAMP(datum) vrijeme, odobrenmanager FROM `change` where user_id = '$id'");
+
 						print "<div id = 'show-user-request'>
 									<div id = 'naslov-ime-usera'>
 										".$ime."
@@ -62,20 +72,24 @@
 										$naslov = $changer['naslov'];
 										$datum = date("h:m:Y (h:i)", $changer['vrijeme']);
 										$changeid = $changer['id'];
+										$odobrioManager = $changer['odobrenmanager'];
 										
-										print "<div id = 'show-user-changes'>";
-													print $naslov;
+										if($odobrioManager != 1) //znaci nije odobren jos od strane managera
+										{
+											print "<div id = 'show-user-changes'>";
+													print "Title : " .$naslov;
 													print "<br><br>";
-													print $datum;
-													print "<form method = 'post'>
-														<table align='center'>
-															<tr>
-																<td><button type='submit' name='btn-accept'>Accept</button></td>
-																<td><input type='text' value='".$changeid."' name='userchangeid' style='display:none;'></button></td>
-															</tr>
-														</table>
-													</form>
-												</div>";
+													print "Creation date : " .$datum;
+													print "<form method = 'post' id = 'accept-change'>
+																<table>
+																	<tr>
+																		<td><button type='submit' name='btn-accept' id = 'button-accept'>Accept</button></td>
+																		<td><input type='text' value='".$changeid."' name='userchangeid' style='display:none;'></button></td>
+																	</tr>
+																</table>
+															</form>
+														</div>";
+													}										
 									}
 										
 						print"</div>";

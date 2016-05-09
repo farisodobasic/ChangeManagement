@@ -17,3 +17,8 @@ username : orhan
 email : orhan@gmail.com
 password : orhan
 type : 0
+
+username: meho
+email : meho@gmail.com
+password : meho
+type : 0
