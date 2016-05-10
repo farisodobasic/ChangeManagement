@@ -146,7 +146,7 @@ table tr td a
 	overflow: hidden;
 	width: 1080px;
 	height: 540px;
-	background-color: blue;
+	background-color: black;
 	opacity: 0.6;
 	overflow-y: auto;
 
@@ -240,6 +240,9 @@ li a:hover {
 	top: 25x;
 	margin-top: 25px;
 	border-top: 1px solid white;
+	color: white;
+	border : 1px solid white;
+	padding: 10px;
 }
 
 #accept-change

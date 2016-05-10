@@ -48,7 +48,7 @@
 
 		<div id = "user-dashboard-div">
 			
-			<?php
+			<!--<?php
 				$veza = new PDO("mysql:dbname=dbchange;host=localhost;charset=utf8", "admin", "admin");
 				$veza->exec("set names utf8");
 				$rezultat = $veza->query("select id, username, email, type from users");
@@ -96,7 +96,7 @@
 						print"</div>";
 					}
 				}
-			?>
+			?>-->
 			<!--<div id = "show-user-request">
 				<div id = "naslov-ime-usera">
 					Faris
