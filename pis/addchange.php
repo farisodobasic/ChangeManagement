@@ -68,7 +68,6 @@
 			 <ul>
 			  <li><a id = "odabran-show-request" href="addchange.php">ADD A NEW CHANGE REQUEST</a></li>
 			  <li><a href="review.php">REVIEW MY CHANGE REQUESTS</a></li>
-			  <li><a href="#">DELETE CHANGE REQUESTS</a></li>
 			  <li><a href="#">OPTION 1</a></li>
 			  <li><a href="#">OPTION 2</a></li>
 			  <li><a href="#">OPTION 3</a></li>
@@ -115,7 +114,7 @@
 
 
 									<tr>
-										<td colspan="3"><button type="submit" name="btn-add">Add change</button></td>
+										<td colspan="3"><button type="submit" name="btn-add" class="addchange">Add change</button></td>
 									</tr>
 									<tr>
 										

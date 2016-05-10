@@ -146,9 +146,10 @@ table tr td a
 	overflow: hidden;
 	width: 1080px;
 	height: 540px;
-	background-color: black;
+	background-color: blue;
 	opacity: 0.6;
 	overflow-y: auto;
+
 }
 /*VERTICAL MENU -- obicni user*/
 ul {
@@ -252,4 +253,10 @@ li a:hover {
 {
 	margin-top: -20px;
 	top: -20px;
+	margin-bottom: 50px;
+}
+
+.addchange
+{
+	margin-bottom: 100px;
 }

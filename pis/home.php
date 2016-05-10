@@ -31,7 +31,6 @@
 			 <ul>
 			  <li><a href="addchange.php">ADD A NEW CHANGE REQUEST</a></li>
 			  <li><a href="review.php">REVIEW MY CHANGE REQUESTS</a></li>
-			  <li><a href="#">DELETE CHANGE REQUESTS</a></li>
 			  <li><a href="#">OPTION 1</a></li>
 			  <li><a href="#">OPTION 2</a></li>
 			  <li><a href="#">OPTION 3</a></li>
