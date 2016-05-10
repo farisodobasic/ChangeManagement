@@ -41,7 +41,7 @@
 	<div id = "user-frame-div">
 		<div id = "user-menu-div">
 			 <ul>
-			  <li><a id = "odabran-show-request" href="showrequestsmanager.php">SHOW REQUESTS</a></li>
+			  <li><a href="showrequestsmanager.php">SHOW REQUESTS</a></li>
 			  <li><a href="logout.php?logout">LOGOUT</a></li>
 			</ul> 
 		</div>
